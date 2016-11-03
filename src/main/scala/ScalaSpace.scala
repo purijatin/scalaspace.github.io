@@ -16,7 +16,7 @@ object ScalaSpace extends JSApp {
 
   def onClick(map: Map, marker: Marker, group: Group): Unit = {
     val link = Option(group.url)
-
+//AIzaSyDGIJFLJjhYi2yZeCbZH9ieyuBIkT7v4pw
     link match {
       case Some(l) =>
         val content = document.createElement("a")
