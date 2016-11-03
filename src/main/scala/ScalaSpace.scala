@@ -1,6 +1,7 @@
 package scalaspace
 
 import google.maps._
+import org.scalajs.dom
 import org.scalajs.dom._
 import upickle.default._
 
@@ -14,25 +15,32 @@ object ScalaSpace extends JSApp {
   val infoWindow = new InfoWindow()
 
   def onClick(map: Map, marker: Marker, group: Group): Unit = {
-    val link = if (group.url.startsWith("http")) group.url else s"http://www.meetup.com/${group.url}/"
-    val content = document.createElement("a")
-    content.setAttribute("href", link)
-    content.innerHTML = group.name
-    infoWindow.setContent(content)
-    infoWindow.open(map, marker)
+    val link = Option(group.url)
+
+    link match {
+      case Some(l) =>
+        val content = document.createElement("a")
+        content.setAttribute("href", l)
+        content.innerHTML = group.name
+        infoWindow.setContent(content)
+        infoWindow.open(map, marker)
+      case None =>
+    }
+
+
   }
 
-  def logo(group: Group): Icon =
-    if (group.justScala) Icon("img/markers/scala.png") else Icon("img/markers/lambda.png")
+  def logo(group: Group): Icon =Icon("img/markers/parivartan.jpg")
 
   def initialize(): Unit = {
+    console.log("starting...")
 
     val opts = MapOptions(
-      center = new LatLng(51.5072, 0.1275),
-      zoom = 6,
+      center = new LatLng(17.439252, 78.372572),
+      zoom = 13,
       mapTypeId = MapTypeId.ROADMAP,
-      mapTypeControl = false,
-      streetViewControl = false)
+      mapTypeControl = true,
+      streetViewControl = true)
 
     val map = new Map(document.getElementById("map"), opts)
 
@@ -50,10 +58,10 @@ object ScalaSpace extends JSApp {
         // FIXME Restore the calculator function
         new MarkerClusterer(map, markers, js.Dynamic.literal(
           gridSize = 50,
-          minimumClusterSize = 2
+          minimumClusterSize = 5
         ))
-        if (navigator.geolocation != null) {
-          navigator.geolocation.getCurrentPosition { (position: Position) =>
+        if (dom.window.navigator.geolocation != null) {
+          dom.window.navigator.geolocation.getCurrentPosition { (position: Position) =>
             map.setCenter(new LatLng(position.coords.latitude, position.coords.longitude))
           }
         }
@@ -62,7 +70,8 @@ object ScalaSpace extends JSApp {
   }
 
   override def main(): Unit = {
-    google.maps.event.addDomListener(window, "load", () => initialize)
+    console.log("main..")
+    google.maps.event.addDomListener(window, "load", () => initialize())
     val contribute = document.getElementById("contribute")
     document.getElementById("expand-contribute").addEventListener("click", { (event: Event) =>
       contribute.setAttribute("style", "display:block")
