@@ -1,16 +1,55 @@
 {
   "groups": [
     {
-      "name": "Pratap Memorial School",
+      "name": "Govt Upper Primary School, Gowlidoddy",
       "url": "",
-      "latitude": 17.439252,
-      "longitude": 78.372572
+      "latitude": 17.430888,
+      "longitude": 78.322935
+    },
+    {
+      "name": "Gowlidoddy Primary School",
+      "url": "",
+      "latitude": 17.421402,
+      "longitude": 78.324297
     },
     {
       "name": "Keshavnagar primary school",
       "url": "amsterdam-scala",
       "latitude": 17.4323780,
       "longitude": 78.3274110
+    },
+    {
+      "name": "Kokapet government School",
+      "url": "",
+      "latitude": 17.394290,
+      "longitude": 78.331987
+    },
+    {
+      "name": "Pratap Memorial School",
+      "url": "",
+      "latitude": 17.439252,
+      "longitude": 78.372572
+    },
+
+    {
+      "name": "Zilla Parishad High School",
+      "url": "",
+      "latitude": 17.540146,
+      "longitude": 78.364725
+    },
+    {
+      "name": "Zilla Parishad Primary School",
+      "url": "",
+      "latitude": 17.445905,
+      "longitude": 78.364391
+    },
+
+    {
+      "name": "ZPHS miyapur",
+      "url": "",
+      "latitude": 17.494337,
+      "longitude":  78.353830
     }
+
   ]
 }
