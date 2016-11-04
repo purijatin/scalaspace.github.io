@@ -36,7 +36,7 @@ object ScalaSpace extends JSApp {
     console.log("starting...")
 
     val opts = MapOptions(
-      center = new LatLng(17.439252, 78.372572),
+      center = new LatLng(17.445905, 78.364391),
       zoom = 13,
       mapTypeId = MapTypeId.ROADMAP,
       mapTypeControl = true,
